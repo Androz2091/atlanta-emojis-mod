@@ -1,0 +1,22 @@
+{
+  "name": "atlanta-emojis-mod",
+  "version": "1.0.0",
+  "description": "Moderator bot for the Atlanta Emojis servers",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Androz2091/atlanta-emojis-mod.git"
+  },
+  "author": "Androz2091",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Androz2091/atlanta-emojis-mod/issues"
+  },
+  "homepage": "https://github.com/Androz2091/atlanta-emojis-mod#readme",
+  "dependencies": {
+    "discord.js": "github:discordjs/discord.js"
+  }
+}
