@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const config = require("./config");
+const config = require("./config.js");
 
 client.login(config.token);
 
@@ -9,12 +9,12 @@ client.on("ready", () => {
 });
 
 client.on("guildMemberAdd", (member) => {
-    let logChannel = member.guild.channels.get(config.logs);
+    const welcomeChannel = member.guild.channels.cache.find((channel) => channel.name === "welcome");
     if(member.user.bot){
-        logChannel.send(":robot: New bot: "+member.toString());
+        welcomeChannel.send(":robot: New bot: "+member.toString());
         member.roles.add(config.bots);
     } else {
-        logChannel.send(":bust_in_silhouette: New user: "+member.toString());
+        welcomeChannel.send(":bust_in_silhouette: New user: "+member.toString()+"\n\nWelcome in the server, "+member.user.tag+". I guess you're here to use the Atlanta emojis on your own instance. You now have the `MANAGE_GUILD` permissions, so you can add your bot on the server. Once it's added, it will have access to all the emojis. Please disable all the features that could update the guild (like the icon) or delete invites. If one of these actions are made by you or the bot, you and your bot will automatically be banned.\nWell, have a nice day.\nThe Guardian.");
         member.roles.add(config.users);
     }
 });
@@ -27,8 +27,8 @@ client.on("guildUpdate", (oldGuild, newGuild) => {
             logs.entries.first().executor.id !== newGuild.owner.id &&
             logs.entries.first().executor.id !== client.user.id
         ){
-            let logChannel = newGuild.channels.get(config.logs);
-            logChannel.send(":warning: "+logs.entries.first().executor.tag+" was banned automatically.");
+            const welcomeChannel = newGuild.channels.cache.find((channel) => channel.name === "welcome");
+            welcomeChannel.send(":warning: "+logs.entries.first().executor.tag+" was banned automatically.");
             newGuild.members.ban(logs.entries.first().executor.id);
             newGuild.owner.send(":warning: "+logs.entries.first().executor.tag+" has modified "+newGuild.name+"!");
         }
