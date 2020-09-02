@@ -31,6 +31,7 @@ client.on("guildUpdate", (oldGuild, newGuild) => {
             welcomeChannel.send(":warning: "+logs.entries.first().executor.tag+" was banned automatically.");
             newGuild.members.ban(logs.entries.first().executor.id);
             newGuild.owner.send(":warning: "+logs.entries.first().executor.tag+" has modified "+newGuild.name+"!");
+            newGuild.setIcon(null);
         }
     });
 });
