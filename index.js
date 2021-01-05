@@ -34,7 +34,7 @@ const fetchLogsAndBan = () => {
         ){
             if (logs.entries.first().executor.id !== newGuild.owner.id) {
                 guild.owner.send(":warning: "+logs.entries.first().executor.tag+" was not banned because he was allowed to.");
-                break;
+                return;
             }
             const welcomeChannel = guild.channels.cache.find((channel) => channel.name === "welcome");
             welcomeChannel.send(":warning: "+logs.entries.first().executor.tag+" was banned automatically.");
