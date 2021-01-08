@@ -23,7 +23,7 @@ client.on("guildMemberAdd", (member) => {
                 adder = logs.entries.first().executor.id;
             }
 
-            welcomeChannel.send(":robot: New bot: "+member.toString()+(adder ? '. Added by <@'+adder : '>'));
+            welcomeChannel.send(":robot: New bot: "+member.toString()+(adder ? '. Added by <@'+adder+'>' : ''));
             member.roles.add(config.bots);
         })
         
