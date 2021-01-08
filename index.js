@@ -6,11 +6,12 @@ const config = require("./config.js");
 
 client.login(config.token);
 
+let guild = null;
+
 client.on("ready", () => {
+    guild = client.guilds.cache.first();
     console.log("Ready.");
 });
-
-let guild = null;
 
 client.on("guildMemberAdd", (member) => {
     const welcomeChannel = member.guild.channels.cache.find((channel) => channel.name === "welcome");
@@ -30,7 +31,6 @@ client.on("guildMemberAdd", (member) => {
         welcomeChannel.send(":bust_in_silhouette: New user: "+member.toString()+"\n\nWelcome in the server, "+member.user.tag+". I guess you're here to use the Atlanta emojis on your own instance. You now have the `MANAGE_GUILD` permissions, so you can add your bot on the server. Once it's added, it will have access to all the emojis. Please disable all the features that could update the guild (like the icon) or delete invites. If one of these actions are made by you or the bot, you and your bot will automatically be banned.\nWell, have a nice day.\nThe Guardian.");
         member.roles.add(config.users);
     }
-    guild = welcomeChannel.guild;
 });
 
 const fetchLogsAndBan = () => {
@@ -41,7 +41,7 @@ const fetchLogsAndBan = () => {
             logs.entries.first().action === "INVITE_DELETE") &&
             logs.entries.first().executor.id !== client.user.id
         ){
-            if (logs.entries.first().executor.id !== newGuild.owner.id) {
+            if (logs.entries.first().executor.id === guild.ownerID) {
                 guild.owner.send(":warning: "+logs.entries.first().executor.tag+" was not banned because he was allowed to.");
                 return;
             }
