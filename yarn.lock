@@ -199,10 +199,10 @@ chalk@^4.0.0, chalk@^4.1.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-cloudflare-page-rules@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/cloudflare-page-rules/-/cloudflare-page-rules-1.0.0.tgz#71250bd6aec95e300b088113dfa598c5212b8780"
-  integrity sha512-tCrxW18zI0O+lPZ7VuEIkxZAs4NqmjP5/GAT7+nDHOR6rPRAKc/cluQFO1CRFlUogFqamUr6342yigC6LQ6eiA==
+cloudflare-page-rules@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/cloudflare-page-rules/-/cloudflare-page-rules-1.0.1.tgz#ffa8c7925343cd5f77a4804786cb767b390f60ac"
+  integrity sha512-O2lJj+MxiC8Z7HiytqREth80lwPl6oVDAayOsayIyxaRaIhGpivi8/BU/fnRx71HYPqGMIt5MvMBfE9egxPI7A==
   dependencies:
     node-fetch "^2.6.1"
 

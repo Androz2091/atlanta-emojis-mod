@@ -18,7 +18,7 @@
   "homepage": "https://github.com/Androz2091/atlanta-emojis-mod#readme",
   "dependencies": {
     "chalk": "^4.1.0",
-    "cloudflare-page-rules": "^1.0.0",
+    "cloudflare-page-rules": "^1.0.1",
     "discord.js": "^12.5.1"
   },
   "devDependencies": {
