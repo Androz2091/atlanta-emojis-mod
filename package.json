@@ -17,6 +17,16 @@
   },
   "homepage": "https://github.com/Androz2091/atlanta-emojis-mod#readme",
   "dependencies": {
+    "chalk": "^4.1.0",
+    "cloudflare": "cloudflare/node-cloudflare",
+    "cloudflare-page-rules": "^1.0.0",
     "discord.js": "^12.5.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.18.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1"
   }
 }
