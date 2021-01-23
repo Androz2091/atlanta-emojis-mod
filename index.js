@@ -19,7 +19,7 @@ const getActiveInvite = async () => {
 }
 
 const updatePageRule = async (newInvite) => {
-    await cloudflare.pageRules.edit(config.cloudflareZone, config.cloudflarePageRule, {
+    await cloudflare.edit(config.cloudflarePageRule, {
         targets: [
             {
                 target: 'url',
