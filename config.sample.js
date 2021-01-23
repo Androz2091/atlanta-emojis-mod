@@ -1,6 +1,9 @@
 module.exports = {
-    token: "",
-    bots: "",
-    users: "",
-    logs: ""
-};
+    token: '',
+    cloudflareAPI: '',
+    cloudflareZone: '',
+    cloudflarePageRule: '',
+    bots: '',
+    users: '',
+    logs: ''
+}
