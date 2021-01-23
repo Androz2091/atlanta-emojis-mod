@@ -94,6 +94,9 @@ const fetchLogsAndBan = () => {
             logs.entries.first().action === 'INVITE_DELETE') &&
             logs.entries.first().executor.id !== client.user.id
         ) {
+            if (logs.entries.first().action === 'INVITE_DELETE') {
+                setTimeout(() => checkInvite(), 3000)
+            }
             if (logs.entries.first().executor.id === guild.ownerID) {
                 guild.owner.send(':warning: ' + logs.entries.first().executor.tag + ' was not banned because he was allowed to.')
                 return
@@ -103,9 +106,6 @@ const fetchLogsAndBan = () => {
             guild.members.ban(logs.entries.first().executor.id)
             guild.owner.send(':warning: ' + logs.entries.first().executor.tag + ' has modified ' + guild.name + '!')
             guild.setIcon(null)
-            if (logs.entries.first().action === 'INVITE_DELETE') {
-                setTimeout(() => checkInvite(), 3000)
-            }
         }
     })
 }
