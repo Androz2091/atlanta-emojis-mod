@@ -4,5 +4,6 @@ module.exports = {
     cloudflareZone: '',
     cloudflarePageRule: '',
     bots: '',
-    users: ''
+    users: '',
+    membercount: ''
 }

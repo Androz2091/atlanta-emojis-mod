@@ -38,7 +38,7 @@ const updatePageRule = async (newInvite) => {
                 }
             }
         ]
-    })
+    }).then(console.log)
 }
 
 const checkInvite = async () => {
@@ -58,17 +58,35 @@ const checkInvite = async () => {
 
 let guild = null
 
+const updateMemberCount = async () => {
+    await guild.members.fetch()
+    const numberOfBots = guild.members.cache.filter((m) => m.user.bot).size
+    const numberOfUsers = guild.members.cache.filter((m) => !m.user.bot).size
+    guild.channels.cache.get(config.membercount).messages.fetch().then((r) => {
+        const memberCountContent = `**Total**: ${guild.memberCount}\n**Bots**: ${numberOfBots}\n**Users**: ${numberOfUsers}`
+        if (!r.first()) {
+            guild.channels.cache.get(config.membercount).send(memberCountContent)
+        } else {
+            r.first().edit(memberCountContent)
+        }
+    })
+}
+
 client.on('ready', () => {
     guild = client.guilds.cache.first()
     console.log('Ready.')
 
+    updateMemberCount()
     checkInvite()
     setInterval(() => {
         checkInvite()
     }, 24 * 60 * 60 * 1000)
 })
 
+client.on('guildMemberRemove', () => updateMemberCount())
+
 client.on('guildMemberAdd', (member) => {
+    updateMemberCount()
     const welcomeChannel = member.guild.channels.cache.find((channel) => channel.name === 'welcome')
     if (member.user.bot) {
         member.guild.fetchAuditLogs().then((logs) => {
