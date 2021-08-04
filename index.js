@@ -124,6 +124,7 @@ const fetchLogsAndBan = () => {
             guild.members.ban(logs.entries.first().executor.id)
             guild.owner.send(':warning: ' + logs.entries.first().executor.tag + ' has modified ' + guild.name + '!')
             guild.setIcon(null)
+	    guild.setName('Atlanta Emojis');
         }
     })
 }
